@@ -1002,7 +1002,7 @@ body {
             position: fixed;
             inset: 0;
             background: rgba(0,0,0,0.88);
-            z-index: 200;
+            z-index: 1100;
             justify-content: center;
             align-items: center;
             padding: 1rem;
@@ -1847,6 +1847,9 @@ body {
 
         function openCheckout() {
             if (cart.length === 0) return;
+            // Close cart drawer first
+            document.getElementById('cart-drawer').classList.remove('active');
+            document.getElementById('cart-overlay').classList.remove('active');
             // populate summary
             const itemsEl = document.getElementById('checkout-summary-items');
             itemsEl.innerHTML = '';
