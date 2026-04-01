@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;family=Great+Vibes&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
         :root {
             /* Colors matching the design */
@@ -994,6 +995,241 @@ body {
   .hero h1 {font-size: clamp(3rem, 11vw, 4.5rem);}
   .hero .script-text {font-size: clamp(2.8rem, 10vw, 4rem);}
 }
+
+        /* ====== CHECKOUT MODAL ====== */
+        .checkout-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.88);
+            z-index: 200;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        .checkout-overlay.active { display: flex; }
+
+        .checkout-modal {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 560px;
+            max-height: 92vh;
+            overflow-y: auto;
+            position: relative;
+            scrollbar-width: thin;
+            scrollbar-color: var(--color-primary) transparent;
+        }
+        .checkout-modal-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: var(--color-bg-card);
+            z-index: 1;
+        }
+        .checkout-modal-header h2 {
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .checkout-modal-header h2 span { color: var(--color-primary); }
+        .checkout-modal-header p {
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+        .close-checkout {
+            background: none;
+            border: none;
+            color: var(--color-text-main);
+            font-size: 1.8rem;
+            cursor: pointer;
+            line-height: 1;
+            opacity: 0.6;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+        .close-checkout:hover { opacity: 1; color: var(--color-primary); }
+
+        .checkout-order-summary {
+            background: rgba(0,0,0,0.35);
+            margin: 1.5rem 2rem 0;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .checkout-order-summary h3 {
+            font-size: 0.65rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--color-text-muted);
+            margin-bottom: 0.8rem;
+        }
+        .checkout-summary-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.83rem;
+            padding: 0.35rem 0;
+            border-bottom: 1px dashed rgba(255,255,255,0.05);
+        }
+        .checkout-summary-item:last-of-type { border-bottom: none; }
+        .checkout-summary-item .item-name { color: var(--color-text-muted); }
+        .checkout-summary-item .item-qty {
+            font-size: 0.7rem;
+            color: var(--color-primary);
+            margin-left: 4px;
+        }
+        .checkout-summary-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-top: 0.9rem;
+            padding-top: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-weight: 700;
+        }
+        .checkout-summary-total .total-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--color-text-muted);
+        }
+        .checkout-summary-total .total-value {
+            color: var(--color-primary);
+            font-size: 1.15rem;
+        }
+
+        .checkout-form { padding: 1.5rem 2rem 2rem; }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            margin-bottom: 1rem;
+        }
+        .form-group:last-of-type { margin-bottom: 0; }
+        .form-row .form-group { margin-bottom: 0; }
+
+        .form-group label {
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--color-text-muted);
+        }
+        .form-group label em {
+            font-style: normal;
+            font-size: 0.6rem;
+            opacity: 0.55;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+        .form-group input,
+        .form-group textarea {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            color: var(--color-text-main);
+            padding: 0.72rem 1rem;
+            font-family: var(--font-main);
+            font-size: 0.88rem;
+            transition: var(--transition);
+            outline: none;
+            width: 100%;
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color: rgba(255,255,255,0.2); }
+        .form-group input:focus,
+        .form-group textarea:focus { border-color: var(--color-primary); background: rgba(224,42,32,0.04); }
+        .form-group input.error,
+        .form-group textarea.error { border-color: #e02a20; background: rgba(224,42,32,0.07); }
+        .form-group .field-error {
+            font-size: 0.68rem;
+            color: #e87268;
+            display: none;
+            margin-top: 1px;
+        }
+        .form-group .field-error.visible { display: block; }
+        .form-group textarea { resize: none; height: 76px; }
+
+        .btn-submit-order {
+            width: 100%;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-family: var(--font-main);
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .btn-submit-order:hover:not(:disabled) { background: #c42218; transform: translateY(-2px); }
+        .btn-submit-order:disabled { opacity: 0.55; cursor: not-allowed; }
+
+        .checkout-success {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 3rem 2rem;
+            gap: 1rem;
+        }
+        .checkout-success.visible { display: flex; }
+        .checkout-success .success-icon {
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            background: rgba(224,42,32,0.12);
+            border: 2px solid var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        .checkout-success h3 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .checkout-success p { color: var(--color-text-muted); font-size: 0.88rem; line-height: 1.7; }
+        .checkout-success .success-email { color: var(--color-primary); font-weight: 600; }
+        .checkout-error-msg {
+            background: rgba(224,42,32,0.1);
+            border: 1px solid rgba(224,42,32,0.3);
+            border-radius: 6px;
+            padding: 0.8rem 1rem;
+            font-size: 0.8rem;
+            color: #e87268;
+            margin-top: 1rem;
+            display: none;
+            text-align: center;
+        }
+        .checkout-error-msg.visible { display: block; }
+
+        @media (max-width: 600px) {
+            .form-row { grid-template-columns: 1fr; }
+            .checkout-modal-header,
+            .checkout-form { padding-left: 1.2rem; padding-right: 1.2rem; }
+            .checkout-order-summary { margin-left: 1.2rem; margin-right: 1.2rem; }
+        }
 </style>
 </head>
 <body>
@@ -1468,9 +1704,90 @@ body {
 <span>Razem:</span>
 <span id="cart-total-price">0,00 zł</span>
 </div>
-<button class="btn btn-primary btn-checkout" onclick="alert('To jest wersja demonstracyjna strony wizualnej. Płatność nie jest zaimplementowana.')">PRZEJDŹ DO KASY</button>
+<button class="btn btn-primary btn-checkout" onclick="openCheckout()">PRZEJDŹ DO KASY</button>
 </div>
 </div>
+<!-- CHECKOUT MODAL -->
+<div class="checkout-overlay" id="checkout-overlay">
+  <div class="checkout-modal" id="checkout-modal">
+
+    <div class="checkout-modal-header">
+      <div>
+        <h2>Złóż <span>Zamówienie</span></h2>
+        <p>Place your order / Złóż zamówienie</p>
+      </div>
+      <button class="close-checkout" onclick="closeCheckout()">×</button>
+    </div>
+
+    <!-- Order summary -->
+    <div class="checkout-order-summary" id="checkout-summary">
+      <h3>Twoje zamówienie / Your order</h3>
+      <div id="checkout-summary-items"></div>
+      <div class="checkout-summary-total">
+        <span class="total-label">Razem / Total</span>
+        <span class="total-value" id="checkout-summary-total">0,00 zł</span>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <form class="checkout-form" id="checkout-form" novalidate onsubmit="submitOrder(event)">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Imię <em>/ First name</em></label>
+          <input type="text" id="f-name" placeholder="Jan" autocomplete="given-name"/>
+          <span class="field-error" id="err-name">Podaj imię / Enter your first name</span>
+        </div>
+        <div class="form-group">
+          <label>Nazwisko <em>/ Last name</em></label>
+          <input type="text" id="f-surname" placeholder="Kowalski" autocomplete="family-name"/>
+          <span class="field-error" id="err-surname">Podaj nazwisko / Enter your last name</span>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Telefon <em>/ Phone</em></label>
+          <input type="tel" id="f-phone" placeholder="+48 123 456 789" autocomplete="tel"/>
+          <span class="field-error" id="err-phone">Nieprawidłowy numer / Invalid phone number</span>
+        </div>
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" id="f-email" placeholder="jan@email.com" autocomplete="email"/>
+          <span class="field-error" id="err-email">Nieprawidłowy e-mail / Invalid email</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Adres dostawy <em>/ Delivery address</em></label>
+        <textarea id="f-address" placeholder="ul. Przykładowa 12/3, 40-000 Katowice" autocomplete="street-address"></textarea>
+        <span class="field-error" id="err-address">Podaj adres dostawy / Enter delivery address</span>
+      </div>
+
+      <button type="submit" class="btn-submit-order" id="btn-submit">
+        ZAMÓW TERAZ / ORDER NOW
+      </button>
+      <div class="checkout-error-msg" id="checkout-error">
+        Błąd wysyłki. Spróbuj ponownie lub zadzwoń do nas.<br/>
+        Sending error. Please try again or call us.
+      </div>
+
+    </form>
+
+    <!-- Success screen -->
+    <div class="checkout-success" id="checkout-success">
+      <div class="success-icon">🔥</div>
+      <h3>Zamówienie złożone!</h3>
+      <p>
+        Dziękujemy! Twoje zamówienie zostało przyjęte.<br/>
+        Thank you! Your order has been received.<br/><br/>
+        Potwierdzenie wysłaliśmy na <span class="success-email" id="success-email-display"></span>
+      </p>
+    </div>
+
+  </div>
+</div>
+
 <!-- LOGIKA JAVASCRIPT KOSZYKA -->
 <script>
         let cart = [];
@@ -1512,6 +1829,147 @@ body {
                 }
                 updateCartUI();
             }
+        }
+
+        // ============================================================
+        // KONFIGURACJA E-MAIL — zmień tylko tutaj! / Change only here!
+        // ============================================================
+        const EMAIL_CONFIG = {
+            publicKey:          'TWOJ_PUBLIC_KEY',          // EmailJS → Account → Public Key
+            serviceId:          'TWOJ_SERVICE_ID',          // EmailJS → Email Services → Service ID
+            ownerTemplateId:    'TEMPLATE_OWNER',           // Template for YOU (order notification)
+            customerTemplateId: 'TEMPLATE_CUSTOMER',        // Template for CUSTOMER (confirmation)
+            ownerEmail:         'dzmitryieuzakhar@gmail.com' // ← твоя почта (можно изменить)
+        };
+        // ============================================================
+
+        emailjs.init(EMAIL_CONFIG.publicKey);
+
+        function openCheckout() {
+            if (cart.length === 0) return;
+            // populate summary
+            const itemsEl = document.getElementById('checkout-summary-items');
+            itemsEl.innerHTML = '';
+            let total = 0;
+            cart.forEach(item => {
+                total += item.price * item.quantity;
+                const row = document.createElement('div');
+                row.className = 'checkout-summary-item';
+                row.innerHTML = `<span class="item-name">${item.name}${item.variant ? ' · ' + item.variant : ''}<span class="item-qty">×${item.quantity}</span></span>
+                                 <span>${(item.price * item.quantity).toFixed(2).replace('.',',')} zł</span>`;
+                itemsEl.appendChild(row);
+            });
+            document.getElementById('checkout-summary-total').textContent =
+                total.toFixed(2).replace('.',',') + ' zł';
+
+            // reset form & states
+            document.getElementById('checkout-form').style.display = '';
+            document.getElementById('checkout-success').classList.remove('visible');
+            document.getElementById('checkout-error').classList.remove('visible');
+            document.getElementById('btn-submit').disabled = false;
+            clearErrors();
+
+            document.getElementById('checkout-overlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkout-overlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close on overlay click (outside modal)
+        document.getElementById('checkout-overlay').addEventListener('click', function(e) {
+            if (e.target === this) closeCheckout();
+        });
+
+        function clearErrors() {
+            ['name','surname','phone','email','address'].forEach(f => {
+                const el = document.getElementById('f-' + f);
+                if (el) { el.classList.remove('error'); }
+                const err = document.getElementById('err-' + f);
+                if (err) err.classList.remove('visible');
+            });
+        }
+
+        function validateField(id, errId, check) {
+            const el = document.getElementById(id);
+            const errEl = document.getElementById(errId);
+            const val = el.value.trim();
+            if (!check(val)) {
+                el.classList.add('error');
+                errEl.classList.add('visible');
+                return false;
+            }
+            el.classList.remove('error');
+            errEl.classList.remove('visible');
+            return true;
+        }
+
+        function submitOrder(e) {
+            e.preventDefault();
+            clearErrors();
+
+            const phoneRegex = /^(\+48\s?)?(\d{3}[\s-]?\d{3}[\s-]?\d{3})$/;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+            const ok = [
+                validateField('f-name',    'err-name',    v => v.length >= 2),
+                validateField('f-surname', 'err-surname', v => v.length >= 2),
+                validateField('f-phone',   'err-phone',   v => phoneRegex.test(v)),
+                validateField('f-email',   'err-email',   v => emailRegex.test(v)),
+                validateField('f-address', 'err-address', v => v.length >= 5),
+            ].every(Boolean);
+
+            if (!ok) return;
+
+            const btn = document.getElementById('btn-submit');
+            btn.disabled = true;
+            btn.textContent = 'Wysyłanie... / Sending...';
+
+            const name    = document.getElementById('f-name').value.trim();
+            const surname = document.getElementById('f-surname').value.trim();
+            const phone   = document.getElementById('f-phone').value.trim();
+            const email   = document.getElementById('f-email').value.trim();
+            const address = document.getElementById('f-address').value.trim();
+
+            let orderList = '';
+            let total = 0;
+            cart.forEach(item => {
+                total += item.price * item.quantity;
+                orderList += `• ${item.name}${item.variant ? ' (' + item.variant + ')' : ''} x${item.quantity} — ${(item.price * item.quantity).toFixed(2)} zł\n`;
+            });
+            orderList += `\nRAZEM / TOTAL: ${total.toFixed(2)} zł`;
+
+            const templateParams = {
+                customer_name:    name + ' ' + surname,
+                customer_phone:   phone,
+                customer_email:   email,
+                customer_address: address,
+                order_list:       orderList,
+                order_total:      total.toFixed(2).replace('.',',') + ' zł',
+                owner_email:      EMAIL_CONFIG.ownerEmail,
+                to_email:         email,
+            };
+
+            // Send notification to owner
+            emailjs.send(EMAIL_CONFIG.serviceId, EMAIL_CONFIG.ownerTemplateId, templateParams)
+                .then(() => {
+                    // Send confirmation to customer
+                    return emailjs.send(EMAIL_CONFIG.serviceId, EMAIL_CONFIG.customerTemplateId, templateParams);
+                })
+                .then(() => {
+                    document.getElementById('checkout-form').style.display = 'none';
+                    document.getElementById('success-email-display').textContent = email;
+                    document.getElementById('checkout-success').classList.add('visible');
+                    cart = [];
+                    updateCartUI();
+                })
+                .catch(() => {
+                    btn.disabled = false;
+                    btn.textContent = 'ZAMÓW TERAZ / ORDER NOW';
+                    document.getElementById('checkout-error').classList.add('visible');
+                });
         }
 
         function updateCartUI() {
