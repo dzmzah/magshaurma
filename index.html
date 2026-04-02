@@ -1231,6 +1231,67 @@ body {
             .checkout-form { padding-left: 1.2rem; padding-right: 1.2rem; }
             .checkout-order-summary { margin-left: 1.2rem; margin-right: 1.2rem; }
         }
+
+        /* --- O NAS --- */
+        .onas-section {
+            padding: 6rem 0;
+            border-top: 1px solid rgba(255,255,255,0.04);
+            background: linear-gradient(to bottom, rgba(20,13,10,0.95), transparent);
+        }
+        .onas-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+        .onas-story .section-title {
+            margin-bottom: 1.8rem;
+        }
+        .onas-story .section-title span {
+            color: var(--color-primary);
+        }
+        .onas-story p {
+            color: #d1cbc8;
+            line-height: 1.9;
+            font-size: 1rem;
+            margin-bottom: 1.1rem;
+        }
+        .onas-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+        .stat-card {
+            background: var(--color-bg-card);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 2rem 1.2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .stat-card:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(224,42,32,0.12);
+        }
+        .stat-number {
+            font-size: 2.6rem;
+            font-weight: 900;
+            color: var(--color-primary);
+            line-height: 1;
+            margin-bottom: 0.6rem;
+            letter-spacing: -1px;
+        }
+        .stat-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--color-text-muted);
+        }
+        @media (max-width: 768px) {
+            .onas-grid { grid-template-columns: 1fr; gap: 3rem; }
+        }
 </style>
 </head>
 <body>
@@ -1243,7 +1304,7 @@ body {
 </a>
 <nav class="nav-links">
 <a href="#pelne-menu">Menu</a>
-<a href="#onas">O nas</a>
+<a href="#o-nas">O nas</a>
 <a href="#kontakt">Lokalizacja</a>
 <a href="#kontakt">Kontakt</a>
 <a href="#dostawa">Dostawa</a>
@@ -1277,6 +1338,36 @@ body {
 <div>
 <!-- Miejsce na duże wycięte zdjęcie shaurmy ze zrzutu nr 1 -->
 <img alt="MAG Shaurma hero" class="hero-image-placeholder" src="assets/img_01.png"/>
+</div>
+</div>
+</section>
+<!-- O NAS -->
+<section class="onas-section" id="o-nas">
+<div class="container">
+<div class="onas-grid">
+<div class="onas-story">
+<h2 class="section-title">O <span>nas</span></h2>
+<p>MAG SHAURMA powstała z prawdziwej miłości do kuchni gruzińskiej i ulicznego jedzenia. Chcieliśmy przybliżyć mieszkańcom Katowic autentyczne smaki Kaukazu — soczystą szaurmę, ciepłe chaczapuri i aromatyczne chinkali.</p>
+<p>Każdy składnik dobieramy świeżo, każdego dnia. Bez skrótów, bez kompromisów — tylko prawdziwy smak, który zostaje w pamięci.</p>
+</div>
+<div class="onas-stats">
+<div class="stat-card">
+<div class="stat-number">2024</div>
+<div class="stat-label">Rok otwarcia</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">10+</div>
+<div class="stat-label">Pozycji w menu</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">100%</div>
+<div class="stat-label">Świeże składniki</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">3</div>
+<div class="stat-label">Platformy dostaw</div>
+</div>
+</div>
 </div>
 </div>
 </section>
