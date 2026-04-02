@@ -1433,6 +1433,109 @@ body {
             .reviews-grid { grid-template-columns: 1fr; }
             .google-score { font-size: 2.4rem; }
         }
+
+        /* ===== HAMBURGER ===== */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 6px;
+            z-index: 101;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: white;
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* ===== MOBILE OVERHAUL ===== */
+        @media (max-width: 768px) {
+            /* Header */
+            .header-social { display: none; }
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 69px;
+                left: 0; right: 0;
+                background: rgba(14,9,7,0.98);
+                backdrop-filter: blur(12px);
+                flex-direction: column;
+                padding: 0.5rem 0 1rem;
+                border-bottom: 1px solid var(--color-border);
+                z-index: 99;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links a {
+                padding: 1rem 2rem;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+                font-size: 0.95rem;
+                letter-spacing: 1.5px;
+            }
+            .nav-links a:last-child { border-bottom: none; }
+
+            /* Sections spacing */
+            .hity-section { padding: 1.5rem 0 3.5rem; }
+            .menu-section { padding: 3rem 0 4rem; }
+            .contact-section { padding: 3.5rem 0; }
+            .delivery-section { padding: 3rem 0 4rem; }
+            .onas-section { padding: 3.5rem 0; }
+
+            /* Nasze Hity grid - 2 cols on mobile */
+            .hity-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+            .hit-img { height: 140px; }
+            .hit-content { padding: 0.9rem 0.7rem; }
+            .hit-title { font-size: 0.85rem; margin-bottom: 0.6rem; }
+            .hit-card .menu-variant-new { gap: 5px; }
+            .hit-card .variant-badge { min-width: 40px; font-size: 0.58rem; padding: 3px 5px; }
+            .hit-card .variant-price { min-width: 52px; font-size: 0.82rem; padding: 3px 6px; }
+            .hit-card .btn-add { width: 34px; height: 34px; font-size: 1.2rem; }
+
+            /* Pelne Menu items */
+            .menu-grid-4col { grid-template-columns: 1fr; gap: 0; }
+            .menu-item-new { gap: 0.75rem; margin-bottom: 1.5rem; }
+            .menu-item-img-new { width: 72px; height: 72px; }
+            .menu-item-title-new { font-size: 0.8rem; }
+            .variant-price { min-width: 60px; font-size: 0.9rem; }
+            .variant-badge { min-width: 48px; font-size: 0.6rem; }
+            .btn-add { width: 28px; height: 28px; font-size: 1rem; }
+
+            /* Delivery cards */
+            .delivery-grid { grid-template-columns: 1fr; gap: 0.8rem; }
+            .delivery-card { padding: 1rem; }
+            .delivery-link { padding: 0.45rem 0.75rem; font-size: 0.8rem; }
+
+            /* Contact */
+            .contact-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .contact-card { padding: 2rem 1.5rem; }
+
+            /* Reviews */
+            .google-rating-top { flex-wrap: wrap; justify-content: center; gap: 0.8rem; }
+            .reviews-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+            /* Cart drawer */
+            .cart-drawer { width: 100%; right: -100%; }
+
+            /* Section title */
+            .section-title { font-size: 1.6rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hity-grid { grid-template-columns: 1fr 1fr; }
+            .hit-img { height: 120px; }
+            .container { padding: 0 1rem; }
+            .hero { padding: 110px 0 60px; }
+        }
 </style>
 </head>
 <body>
@@ -1452,6 +1555,9 @@ body {
 <a href="#kontakt">Lokalizacja i kontakt</a>
 <a href="#dostawa">Dostawa</a>
 </nav>
+<button class="hamburger" id="hamburger" aria-label="Menu">
+<span></span><span></span><span></span>
+</button>
 <div class="cart-btn-wrapper">
 <button class="btn-cart" onclick="toggleCart()">
 <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
@@ -2398,5 +2504,21 @@ class="delivery-section" id="dostawa">
             badgeEl.innerText = count;
         }
     </script>
+
+<script>
+  var hamburger = document.getElementById('hamburger');
+  var navLinks  = document.querySelector('.nav-links');
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('open');
+  });
+  // Close menu on link click
+  navLinks.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('open');
+    });
+  });
+</script>
 </body>
 </html>
