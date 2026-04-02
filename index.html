@@ -2296,6 +2296,8 @@ body {
             localStorage.setItem('mag_cart', JSON.stringify(cart));
         }
 
+        document.addEventListener('DOMContentLoaded', () => updateCartUI());
+
         function toggleCart() {
             document.getElementById('cart-drawer').classList.toggle('active');
             document.getElementById('cart-overlay').classList.toggle('active');
