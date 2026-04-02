@@ -120,6 +120,20 @@
             color: var(--color-text-main);
         }
 
+        .header-social {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-left: 16px;
+        }
+        .header-social a {
+            color: #a09995;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+        .header-social a:hover { color: #fff; }
+
         .cart-btn-wrapper {
             display: flex;
             align-items: center;
@@ -1421,6 +1435,10 @@ body {
 <svg viewbox="0 0 24 24"><path d="M17.5 11.5c-.8-1.5-2-2.5-2.5-4.5-.3-1.2.2-2.5.2-2.5s-1.5 1-2 2.5c-.5 1.5-.5 3-.5 3s-1.5-1.5-2-3c0 0-.5 1.5-.5 2.5 0 2 1.5 3.5 2 5 .5 1.5 0 3 0 3s2.5-1.5 3-3.5c.5-2 1.5-2.5 2.3-4zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></svg>
 <div>MAG<br/>SHAURMA</div>
 </a>
+<div class="header-social">
+<a aria-label="Facebook" href="https://www.facebook.com/p/Mag-Shaurma-61561630464748/" rel="noopener noreferrer" target="_blank"><svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+<a aria-label="Instagram" href="https://www.instagram.com/mag_shaurmaa?fbclid=IwZXh0bgNhZW0CMTAAYnJpZBEwMWUwZUxYNFZndnFDb25SRnNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR5plKUYixeOlb7K4_Qku3qRxabJ5703LL8678JDwBT4A3AsCJIz2dxNDuhu3A_aem_KWhO9OMtvIJjJQq-eDx0AQ" rel="noopener noreferrer" target="_blank"><svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg></a>
+</div>
 <nav class="nav-links">
 <a href="#pelne-menu">Menu</a>
 <a href="#o-nas">O nas</a>
