@@ -501,7 +501,15 @@
             border-color: var(--color-primary);
         }
 
-        .kawa-sub-item {
+        
+        .hit-card .btn-add {
+            width: 42px;
+            height: 42px;
+            font-size: 1.5rem;
+            border-radius: 6px;
+        }
+
+.kawa-sub-item {
             margin-bottom: 1rem;
             border-bottom: 1px dashed rgba(255,255,255,0.1);
             padding-bottom: 0.5rem;
@@ -1441,8 +1449,7 @@ body {
 </div>
 <nav class="nav-links">
 <a href="#pelne-menu">Menu</a>
-<a href="#kontakt">Lokalizacja</a>
-<a href="#kontakt">Kontakt</a>
+<a href="#kontakt">Lokalizacja i kontakt</a>
 <a href="#o-nas">O nas</a>
 <a href="#dostawa">Dostawa</a>
 </nav>
@@ -1928,72 +1935,16 @@ body {
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
             Google
         </div>
-        <div class="google-score">4.8</div>
+        <div id="g-score" class="google-score">4.8</div>
         <div>
-            <div class="google-stars">
-                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-            <div class="google-count">1 440 opinii · <a href="https://maps.google.com/?q=MAG+SHAURMA+Katowice" rel="noopener noreferrer" target="_blank">Zobacz na Google Maps</a></div>
+            <div class="google-stars" id="g-stars"></div>
+            <div class="google-count" id="g-count">Ładowanie opinii... · <a href="https://maps.google.com/?q=MAG+SHAURMA+Katowice" rel="noopener noreferrer" target="_blank">Zobacz na Google Maps</a></div>
         </div>
     </div>
-
-    <div class="reviews-grid">
-        <div class="review-card">
-            <div class="review-header">
-                <div class="review-avatar">MK</div>
-                <div class="review-meta">
-                    <div class="review-name">Marta K.</div>
-                    <div class="review-date">Marzec 2025</div>
-                </div>
-            </div>
-            <div class="review-stars">
-                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-            <p class="review-text">Najlepsza szaurma w Katowicach, bez dyskusji! Mięso soczyste, świeże warzywa i ten sos — uzależniający. Wracam tu co tydzień.</p>
-        </div>
-        <div class="review-card">
-            <div class="review-header">
-                <div class="review-avatar">PN</div>
-                <div class="review-meta">
-                    <div class="review-name">Paweł N.</div>
-                    <div class="review-date">Luty 2025</div>
-                </div>
-            </div>
-            <div class="review-stars">
-                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-            <p class="review-text">Chaczapuri Adżaruli — przepyszne! Ciasto idealne, ser roztopiony jak należy. Obsługa miła i szybka. Zdecydowanie polecam każdemu!</p>
-        </div>
-        <div class="review-card">
-            <div class="review-header">
-                <div class="review-avatar">AW</div>
-                <div class="review-meta">
-                    <div class="review-name">Anna W.</div>
-                    <div class="review-date">Styczeń 2025</div>
-                </div>
-            </div>
-            <div class="review-stars">
-                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-            <p class="review-text">Odkryłam to miejsce przypadkowo i żałuję, że nie wcześniej. Chinkali z mięsem są niesamowite. Autentyczny smak, cudowna atmosfera. Wrócimy!</p>
-        </div>
+    <div class="reviews-grid" id="reviews-container">
+        <div class="review-card" style="grid-column:1/-1;text-align:center;color:var(--color-text-muted);padding:2rem;">Ładowanie opinii z Google...</div>
     </div>
+</div>
 </div>
 
 </div>
@@ -2136,6 +2087,118 @@ body {
 
   </div>
 </div>
+
+<!-- GOOGLE PLACES REVIEWS -->
+<script>
+  // =============================================================
+  // KONFIGURACJA GOOGLE REVIEWS
+  // 1. Wygeneruj klucz API: https://console.cloud.google.com/
+  //    Włącz: Maps JavaScript API + Places API
+  // 2. Wstaw swój klucz poniżej w miejsce YOUR_API_KEY
+  // 3. Place ID MAG SHAURMA: ChIJX_somePlaceId (znajdź na
+  //    https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder)
+  // =============================================================
+  var GOOGLE_API_KEY = 'YOUR_API_KEY';
+  var PLACE_ID       = 'YOUR_PLACE_ID';
+
+  function initGoogleReviews() {
+    if (!GOOGLE_API_KEY || GOOGLE_API_KEY === 'YOUR_API_KEY') {
+      showFallbackReviews();
+      return;
+    }
+    var dummy = document.createElement('div');
+    var service = new google.maps.places.PlacesService(dummy);
+    service.getDetails({
+      placeId: PLACE_ID,
+      fields: ['rating', 'user_ratings_total', 'reviews'],
+      language: 'pl'
+    }, function(place, status) {
+      if (status !== google.maps.places.PlacesServiceStatus.OK || !place) {
+        showFallbackReviews();
+        return;
+      }
+      // Update rating
+      if (place.rating) {
+        document.getElementById('g-score').textContent = place.rating.toFixed(1);
+      }
+      if (place.user_ratings_total) {
+        var countEl = document.getElementById('g-count');
+        var link = countEl.querySelector('a');
+        countEl.textContent = place.user_ratings_total.toLocaleString('pl-PL') + ' opinii · ';
+        countEl.appendChild(link);
+      }
+      renderStars('g-stars', place.rating || 4.8);
+      // Render reviews
+      var reviews = (place.reviews || []).filter(function(r){ return r.rating >= 4; });
+      renderReviews(reviews);
+    });
+  }
+
+  function renderStars(containerId, rating) {
+    var el = document.getElementById(containerId);
+    if (!el) return;
+    el.innerHTML = '';
+    var full = Math.round(rating);
+    for (var i = 0; i < 5; i++) {
+      var svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+      svg.setAttribute('viewBox','0 0 24 24');
+      svg.style.fill = i < full ? '#fbbc04' : 'rgba(255,255,255,0.15)';
+      svg.style.width = '22px'; svg.style.height = '22px';
+      var path = document.createElementNS('http://www.w3.org/2000/svg','path');
+      path.setAttribute('d','M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z');
+      svg.appendChild(path);
+      el.appendChild(svg);
+    }
+  }
+
+  function renderReviews(reviews) {
+    var container = document.getElementById('reviews-container');
+    if (!container) return;
+    if (!reviews || reviews.length === 0) { showFallbackReviews(); return; }
+    container.innerHTML = '';
+    reviews.slice(0, 3).forEach(function(r) {
+      var initials = (r.author_name || '?').split(' ').map(function(w){ return w[0]; }).join('').substring(0,2).toUpperCase();
+      var date = r.relative_time_description || '';
+      var stars = '';
+      for (var i = 0; i < 5; i++) {
+        stars += '<svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:' + (i < r.rating ? '#fbbc04' : 'rgba(255,255,255,0.15)') + '"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
+      }
+      var card = document.createElement('div');
+      card.className = 'review-card';
+      card.innerHTML =
+        '<div class="review-header">' +
+          '<div class="review-avatar">' + initials + '</div>' +
+          '<div class="review-meta">' +
+            '<div class="review-name">' + r.author_name + '</div>' +
+            '<div class="review-date">' + date + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="review-stars">' + stars + '</div>' +
+        '<p class="review-text">' + (r.text || '').substring(0, 220) + '</p>';
+      container.appendChild(card);
+    });
+  }
+
+  function showFallbackReviews() {
+    renderStars('g-stars', 4.8);
+    document.getElementById('g-count').innerHTML = '1 440 opinii · <a href="https://maps.google.com/?q=MAG+SHAURMA+Katowice" rel="noopener noreferrer" target="_blank">Zobacz na Google Maps</a>';
+    renderReviews([
+      { author_name:'Marta K.', rating:5, relative_time_description:'Marzec 2025', text:'Najlepsza szaurma w Katowicach, bez dyskusji! Mięso soczyste, świeże warzywa i ten sos — uzależniający. Wracam tu co tydzień.' },
+      { author_name:'Paweł N.', rating:5, relative_time_description:'Luty 2025',  text:'Chaczapuri Adżaruli — przepyszne! Ciasto idealne, ser roztopiony jak należy. Obsługa miła i szybka. Zdecydowanie polecam!' },
+      { author_name:'Anna W.',  rating:5, relative_time_description:'Styczeń 2025', text:'Odkryłam to miejsce przypadkowo i żałuję, że nie wcześniej. Chinkali z mięsem są niesamowite. Autentyczny smak. Wrócimy!' }
+    ]);
+  }
+
+  // Load Google Maps script dynamically only if API key is set
+  if (GOOGLE_API_KEY && GOOGLE_API_KEY !== 'YOUR_API_KEY') {
+    var s = document.createElement('script');
+    s.src = 'https://maps.googleapis.com/maps/api/js?key=' + GOOGLE_API_KEY + '&libraries=places&callback=initGoogleReviews';
+    s.async = true; s.defer = true;
+    document.head.appendChild(s);
+  } else {
+    document.addEventListener('DOMContentLoaded', showFallbackReviews);
+  }
+</script>
 
 <!-- LOGIKA JAVASCRIPT KOSZYKA -->
 <script>
