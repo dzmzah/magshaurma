@@ -5,6 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>MAG SHAURMA - Najlepsza shaurma w Katowicach</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23140d0a'/%3E%3Cpath fill='%23e02a20' d='M17.5 11.5c-.8-1.5-2-2.5-2.5-4.5-.3-1.2.2-2.5.2-2.5s-1.5 1-2 2.5c-.5 1.5-.5 3-.5 3s-1.5-1.5-2-3c0 0-.5 1.5-.5 2.5 0 2 1.5 3.5 2 5 .5 1.5 0 3 0 3s2.5-1.5 3-3.5c.5-2 1.5-2.5 2.3-4zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E"/>
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -1295,9 +1296,17 @@ body {
 <img alt="Shaurma z kurczakiem" class="hit-img" src="assets/img_02.jpg"/>
 <div class="hit-content">
 <h3 class="hit-title">Shaurma z kurczakiem</h3>
-<div class="hit-price-wrapper">
-<span class="hit-price-main">27,90 zł</span>
-<span class="hit-price-sub">/ 32,90 zł</span>
+<div class="menu-item-actions-new">
+<div class="menu-variant-new">
+<span class="variant-badge badge-red">MAŁE</span>
+<span class="variant-price">27,90</span>
+<button class="btn-add" onclick="addToCart('Shaurma z kurczakiem', 27.90, 'Małe')">+</button>
+</div>
+<div class="menu-variant-new">
+<span class="variant-badge badge-red">DUŻE</span>
+<span class="variant-price">32,90</span>
+<button class="btn-add" onclick="addToCart('Shaurma z kurczakiem', 32.90, 'Duże')">+</button>
+</div>
 </div>
 </div>
 </div>
@@ -1306,9 +1315,17 @@ body {
 <img alt="Shaurma z wieprzowiną" class="hit-img" src="assets/img_03.jpg"/>
 <div class="hit-content">
 <h3 class="hit-title">Shaurma z wieprzowiną</h3>
-<div class="hit-price-wrapper">
-<span class="hit-price-main">27,90 zł</span>
-<span class="hit-price-sub">/ 32,90 zł</span>
+<div class="menu-item-actions-new">
+<div class="menu-variant-new">
+<span class="variant-badge badge-red">MAŁE</span>
+<span class="variant-price">27,90</span>
+<button class="btn-add" onclick="addToCart('Shaurma z wieprzowiną', 27.90, 'Małe')">+</button>
+</div>
+<div class="menu-variant-new">
+<span class="variant-badge badge-red">DUŻE</span>
+<span class="variant-price">32,90</span>
+<button class="btn-add" onclick="addToCart('Shaurma z wieprzowiną', 32.90, 'Duże')">+</button>
+</div>
 </div>
 </div>
 </div>
@@ -1317,9 +1334,17 @@ body {
 <img alt="Shaurma z mięsem mieszanym" class="hit-img" src="assets/img_02.jpg"/>
 <div class="hit-content">
 <h3 class="hit-title">Shaurma z mięsem mieszanym</h3>
-<div class="hit-price-wrapper">
-<span class="hit-price-main">27,90 zł</span>
-<span class="hit-price-sub">/ 32,90 zł</span>
+<div class="menu-item-actions-new">
+<div class="menu-variant-new">
+<span class="variant-badge badge-red">MAŁE</span>
+<span class="variant-price">27,90</span>
+<button class="btn-add" onclick="addToCart('Shaurma z mięsem mieszanym', 27.90, 'Małe')">+</button>
+</div>
+<div class="menu-variant-new">
+<span class="variant-badge badge-red">DUŻE</span>
+<span class="variant-price">32,90</span>
+<button class="btn-add" onclick="addToCart('Shaurma z mięsem mieszanym', 32.90, 'Duże')">+</button>
+</div>
 </div>
 </div>
 </div>
@@ -1328,9 +1353,17 @@ body {
 <img alt="Chaczapuri Adżaruli" class="hit-img" src="assets/img_04.jpg"/>
 <div class="hit-content">
 <h3 class="hit-title">Chaczapuri Adżaruli</h3>
-<div class="hit-price-wrapper">
-<span class="hit-price-main">22,90 zł</span>
-<span class="hit-price-sub">/ 32,90 zł</span>
+<div class="menu-item-actions-new">
+<div class="menu-variant-new">
+<span class="variant-badge badge-red">MAŁE</span>
+<span class="variant-price">22,90</span>
+<button class="btn-add" onclick="addToCart('Chaczapuri Adżaruli', 22.90, 'Małe')">+</button>
+</div>
+<div class="menu-variant-new">
+<span class="variant-badge badge-red">DUŻE</span>
+<span class="variant-price">32,90</span>
+<button class="btn-add" onclick="addToCart('Chaczapuri Adżaruli', 32.90, 'Duże')">+</button>
+</div>
 </div>
 </div>
 </div>
@@ -1339,8 +1372,12 @@ body {
 <img alt="Chinkali z mięsem lub serem" class="hit-img" src="assets/img_05.jpg"/>
 <div class="hit-content">
 <h3 class="hit-title">Chinkali z mięsem lub serem</h3>
-<div class="hit-price-wrapper">
-<span class="hit-price-main">5 szt. / 30,00 zł</span>
+<div class="menu-item-actions-new">
+<div class="menu-variant-new">
+<span class="variant-badge badge-red">5 SZT</span>
+<span class="variant-price">30,00</span>
+<button class="btn-add" onclick="addToCart('Chinkali z mięsem lub serem', 30.00, '5 szt')">+</button>
+</div>
 </div>
 </div>
 </div>
@@ -1349,9 +1386,17 @@ body {
 <img alt="Kubdari" class="hit-img" src="assets/img_06.jpg"/>
 <div class="hit-content">
 <h3 class="hit-title">Kubdari</h3>
-<div class="hit-price-wrapper">
-<span class="hit-price-main">17,00 zł</span>
-<span class="hit-price-sub">/ 32,90 zł</span>
+<div class="menu-item-actions-new">
+<div class="menu-variant-new">
+<span class="variant-badge badge-red">MAŁE</span>
+<span class="variant-price">17,00</span>
+<button class="btn-add" onclick="addToCart('Kubdari', 17.00, 'Małe')">+</button>
+</div>
+<div class="menu-variant-new">
+<span class="variant-badge badge-red">DUŻE</span>
+<span class="variant-price">32,90</span>
+<button class="btn-add" onclick="addToCart('Kubdari', 32.90, 'Duże')">+</button>
+</div>
 </div>
 </div>
 </div>
@@ -1813,11 +1858,6 @@ body {
             }
             
             updateCartUI();
-            
-            // Opcjonalnie: automatyczne otwarcie koszyka przy dodaniu
-            if(!document.getElementById('cart-drawer').classList.contains('active')) {
-                toggleCart();
-            }
         }
 
         function updateQuantity(id, change) {
