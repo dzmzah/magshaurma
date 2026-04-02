@@ -2081,7 +2081,12 @@ body {
 <div class="cart-drawer" id="cart-drawer">
 <div class="cart-header">
 <h2>Twój Koszyk</h2>
-<button class="close-cart" onclick="toggleCart()">×</button>
+<div style="display:flex;align-items:center;gap:10px;">
+  <button id="clearCartBtn" onclick="clearCart()" title="Wyczyść koszyk" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);border-radius:8px;width:36px;height:36px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:0.2s;" onmouseover="this.style.background='rgba(220,50,50,0.3)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.color='rgba(255,255,255,0.6)'">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+  </button>
+  <button class="close-cart" onclick="toggleCart()">×</button>
+</div>
 </div>
 <div class="cart-items" id="cart-items-container">
 <!-- Dynamic items -->
@@ -2318,6 +2323,13 @@ body {
                 });
             }
             
+            saveCart();
+            updateCartUI();
+        }
+
+        function clearCart() {
+            if (cart.length === 0) return;
+            cart = [];
             saveCart();
             updateCartUI();
         }
