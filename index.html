@@ -2290,7 +2290,11 @@ body {
 
 <!-- LOGIKA JAVASCRIPT KOSZYKA -->
 <script>
-        let cart = [];
+        let cart = JSON.parse(localStorage.getItem('mag_cart') || '[]');
+
+        function saveCart() {
+            localStorage.setItem('mag_cart', JSON.stringify(cart));
+        }
 
         function toggleCart() {
             document.getElementById('cart-drawer').classList.toggle('active');
@@ -2312,6 +2316,7 @@ body {
                 });
             }
             
+            saveCart();
             updateCartUI();
         }
 
@@ -2322,6 +2327,7 @@ body {
                 if (item.quantity <= 0) {
                     cart = cart.filter(i => i.id !== id);
                 }
+                saveCart();
                 updateCartUI();
             }
         }
@@ -2461,6 +2467,7 @@ body {
                     document.getElementById('success-email-display').textContent = email;
                     document.getElementById('checkout-success').classList.add('visible');
                     cart = [];
+                    saveCart();
                     updateCartUI();
                 })
                 .catch(() => {
